@@ -27,7 +27,9 @@
         android:id="@+id/nav_view"
         android:layout_gravity="start"
         android:clipToPadding="false"
+        style="@style/My.Custom.Design.NavigationView"
         app:menu="@menu/navigation_drawer_menu"
+        app:headerLayout="@layout/nav_header_main"
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>

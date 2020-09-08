@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var drawer: DrawerLayout
@@ -15,6 +16,17 @@ class MainActivity : AppCompatActivity() {
 
         //Setup our own toolbar
         setSupportActionBar(findViewById(R.id.toolbar))
+
+        val nav_view = findViewById<NavigationView>(R.id.nav_view)
+        nav_view.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_view -> {
+                    true
+                }
+            }
+            true
+        }
+
         drawer = findViewById<DrawerLayout>(R.id.drawer)
 
         var drawerToggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
@@ -36,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
